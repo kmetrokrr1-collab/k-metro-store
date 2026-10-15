@@ -1,26 +1,12 @@
-K-METRO HOME — BAMBOO PRODUCT STORE DEMO
+K-METRO WEBSITE — ORDER INQUIRY UPDATE
 
-Files:
-- index.html — storefront
-- style.css — design and mobile layout
-- script.js — add-to-cart demo
-- bamboo-set-1.png and bamboo-set-2.png — the product photos you supplied
+Product price: ₹299
+Order email: k.metro.krr1@gmail.com
+UPI ID: Q224901121@ybl
 
-PREVIEW:
-Extract this ZIP, then open index.html in a browser.
-
-BEFORE GOING LIVE:
-1. ₹499 is only a sample price. Change it to your real selling price in script.js and index.html.
-2. Confirm product count, material, care instructions, delivery charges and stock. Do not claim details you have not verified.
-3. Add your preferred contact method and real business policies.
-4. The cart is a demo; it does not accept payment or send orders. For real orders, connect a proper order system/payment provider or a WhatsApp order link.
-5. Your street address was not added to the public page. Add it only if you want customers to see it.
-
-FREE HOSTING WITH GITHUB PAGES:
-1. Sign in at https://github.com and create a public repository, e.g. k-metro.
-2. Upload all five files to the repository root.
-3. Open Settings > Pages.
-4. Choose Deploy from a branch, branch main, folder /(root), then Save.
-5. Open the published URL shown in Pages settings. It will resemble https://YOUR-USERNAME.github.io/k-metro/ but use your actual URL.
-
-GitHub Pages is free for public static sites, but this starter does not include a product admin panel, inventory database or secure checkout.
+IMPORTANT SETUP NOTES
+1. This is a static GitHub Pages website. It does not verify payments automatically and is not a full ecommerce backend.
+2. Order inquiry form uses FormSubmit (a third-party service). On the first test submission, check k.metro.krr1@gmail.com and follow any activation/confirmation email from FormSubmit before relying on it. Check spam too. Do a test order yourself first.
+3. The UPI button opens a UPI app with the cart total and supplied UPI ID. It does NOT confirm that payment succeeded. Verify each payment in your UPI/bank app before shipping. Never ask customers for UPI PINs or OTPs.
+4. For automated payment confirmation, refunds, and secure checkout, register for a payment gateway account and complete its business/KYC onboarding; then integrate its hosted checkout via a secure backend. Do not put API secret keys in this public repository.
+5. To update the live site: open the k-metro-store GitHub repository, upload/replace index.html, style.css, script.js, and README.txt in the repository root, and commit changes. Keep bamboo-set-1.png and bamboo-set-2.png in the same root folder. Wait a few minutes, then refresh the live website.

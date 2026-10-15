@@ -20,5 +20,13 @@ document.querySelector("#open-cart").addEventListener("click",open);
 document.querySelector("#close-cart").addEventListener("click",close);
 shade.addEventListener("click",close);
 document.querySelector("#items").addEventListener("click",e=>{const b=e.target.closest("[data-qty]");if(!b)return;const i=cart.find(i=>i.id===b.dataset.qty);i.qty+=Number(b.dataset.step);if(i.qty<1)cart=cart.filter(i=>i.id!==b.dataset.qty);render()});
-document.querySelector("#order").addEventListener("click",()=>{if(!cart.length){toast("Please add a product first");return}const lines=cart.map(i=>`${i.name} x ${i.qty} = ${money(i.price*i.qty)}`).join("\n");alert("K-METRO order inquiry demo\n\n"+lines+"\nSubtotal: "+money(cart.reduce((s,i)=>s+i.qty*i.price,0))+"\n\nThis is not a real order. Add your business WhatsApp/contact and a secure payment/checkout solution before launch.")});
+const orderModal=document.querySelector("#order-modal");
+function cartSummary(){return cart.map(i=>`${i.name} x ${i.qty} = ${money(i.price*i.qty)}`).join("\n")+`\nSubtotal: ${money(cart.reduce((s,i)=>s+i.qty*i.price,0))}`}
+function showOrder(){if(!cart.length){toast("Please add a product first");return}document.querySelector("#order-summary").textContent=cartSummary();document.querySelector("#form-summary").value=cartSummary();orderModal.classList.add("visible");orderModal.setAttribute("aria-hidden","false")}
+function hideOrder(){orderModal.classList.remove("visible");orderModal.setAttribute("aria-hidden","true")}
+document.querySelector("#order").addEventListener("click",showOrder);
+document.querySelector("#close-order").addEventListener("click",hideOrder);
+orderModal.addEventListener("click",e=>{if(e.target===orderModal)hideOrder()});
+document.querySelector("#pay-upi").addEventListener("click",()=>{if(!cart.length){toast("Please add a product first");return}const amount=cart.reduce((s,i)=>s+i.qty*i.price,0);const uri=`upi://pay?pa=Q224901121%40ybl&pn=K-METRO&am=${amount}&cu=INR&tn=${encodeURIComponent("K-METRO bamboo utensils order")}`;window.location.href=uri});
+document.querySelector("#order-form").addEventListener("submit",()=>{document.querySelector("#form-summary").value=cartSummary()+"\nPayment choice: "+document.querySelector("#payment-method").value;toast("Opening email inquiry service. Please complete its confirmation if requested.")});
 document.querySelector("#year").textContent=new Date().getFullYear();render();

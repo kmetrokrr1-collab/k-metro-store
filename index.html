@@ -55,7 +55,28 @@
 <div class="shade" id="shade"></div>
 <aside class="drawer" id="drawer" aria-hidden="true"><div class="drawer-head"><div><p class="eyebrow">YOUR SELECTION</p><h2>Your cart <span id="cart-count">(0)</span></h2></div><button id="close-cart" aria-label="Close cart">×</button></div>
 <div id="items" class="items"><p class="empty">Your cart is empty for now.</p></div>
-<div class="cart-footer"><div class="total"><span>Subtotal</span><strong id="total">₹0</strong></div><p>This demo does not take payment or submit a real order.</p><button class="button full" id="order">Prepare order inquiry ↗</button></div></aside>
+<div class="cart-footer"><div class="total"><span>Subtotal</span><strong id="total">₹0</strong></div><p>Submit an order inquiry by email. UPI payment is manual and must be verified separately.</p><button class="button full" id="order">Continue to order ↗</button></div></aside>
 <div id="toast" class="toast" role="status"></div>
+<div class="order-modal" id="order-modal" aria-hidden="true">
+  <div class="order-card">
+    <button class="modal-close" id="close-order" aria-label="Close">×</button>
+    <p class="eyebrow">K-METRO CHECKOUT</p><h2>Order details</h2>
+    <p class="order-summary" id="order-summary"></p>
+    <form id="order-form" action="https://formsubmit.co/k.metro.krr1@gmail.com" method="POST" target="_blank">
+      <input type="hidden" name="_subject" value="New K-METRO order inquiry">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="true">
+      <input type="hidden" name="Order summary" id="form-summary">
+      <label>Full name<input name="Customer name" required autocomplete="name" placeholder="Your name"></label>
+      <label>Phone number<input name="Phone" required type="tel" autocomplete="tel" pattern="[0-9+() -]{8,18}" placeholder="Your mobile number"></label>
+      <label>Delivery address<textarea name="Delivery address" required autocomplete="street-address" rows="3" placeholder="Full delivery address"></textarea></label>
+      <label>Payment method<select name="Payment method" id="payment-method" required><option value="Cash on Delivery (COD)">Cash on Delivery (COD)</option><option value="UPI (manual verification required)">UPI (manual verification required)</option></select></label>
+      <p class="payment-note">For UPI, submit the inquiry first, then use the UPI button. Your order is not confirmed until we verify details and payment.</p>
+      <button class="button full" type="submit">Send order inquiry by email ↗</button>
+    </form>
+    <button class="button full upi-button" id="pay-upi" type="button">Pay cart total with UPI ↗</button>
+    <p class="fine-print">Email delivery uses FormSubmit, a third-party service. The first submission may require you to activate the email address from a confirmation email. Do not enter payment PINs or OTPs here.</p>
+  </div>
+</div>
 <script src="script.js"></script>
 </body></html>
